@@ -14,4 +14,4 @@ public class Factorial {
         int result = ob.factorial(4);
         System.out.println(result);
     }
-}
+}   
