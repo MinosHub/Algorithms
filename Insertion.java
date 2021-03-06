@@ -47,7 +47,7 @@ public class Insertion
     
     public static void main(String[] args) 
     {
-        int arr[] = { 12, 11, 13 , 5 , 6 };
+        int arr[] = { 64,-6,44,25,37,7,29,-22,12,-18 };
 
         Insertion ob = new Insertion();
         

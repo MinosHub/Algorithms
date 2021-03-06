@@ -36,7 +36,7 @@ public class Quick {
             
             // Recursively sort elements before 
             // partition and after partition 
-            // printArray(arr);
+            printArray(arr);
             sort(arr, low, pi-1); 
             sort(arr, pi+1, high); 
         } 
