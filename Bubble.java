@@ -43,12 +43,22 @@ public class Bubble {
         
         Bubble ob = new Bubble();
         int arr[] = {64, 34, 25, 12, 22, 11, 90}; 
-
+        
+        System.out.println("Ascending:");        
         ob.printArray(arr);
+
         System.out.println();
         ob.sort(arr); // this is asc order // to do desc just call sortReverse
 
         System.out.println();
         ob.printArray(arr);
+
+        // System.out.println();
+
+        // System.out.println("Descending:");        
+        // ob.printArray(arr);
+
+        // System.out.println();
+        // ob.sortReverse(arr);
     }
 }

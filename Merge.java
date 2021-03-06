@@ -123,6 +123,7 @@ public class Merge {
             sortReverse(arr, m + 1, r);
             
             mergeReverse(arr, l, m, r);
+            printArray(arr);
         }
     }
 
@@ -143,15 +144,16 @@ public class Merge {
         printArray(arr);
         System.out.println();
         
-        ob.sort(arr, 0, arr.length - 1);
-
         System.out.println("\nAscending");
         printArray(arr);
-
-        ob.sortReverse(arr, 0, arr.length - 1);
+        ob.sort(arr, 0, arr.length - 1);
+        System.out.println();
+        
 
         System.out.println("\nDescending");
         printArray(arr);
+        ob.sortReverse(arr, 0, arr.length - 1);
+        System.out.println();
 
     }
 }
