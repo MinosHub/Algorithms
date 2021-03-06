@@ -18,6 +18,12 @@ public class Binary
         }
         return -1;
     }
+
+    // I would like to find out the values of mid, r, l and return value of the found index 
+    // also check the descending and (ascending if exits)
+
+
+
     public static void main(String[] args) 
     {
         
