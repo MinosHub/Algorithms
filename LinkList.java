@@ -1,12 +1,12 @@
-class Node {
-	int data;
-	Node next;
-	Node prev;
+// class Node {
+// 	int data;
+// 	Node next;
+// 	Node prev;
 	
-	Node(int givenData) {
-		this.data = givenData;
-	}
-}
+// 	Node(int givenData) {
+// 		this.data = givenData;
+// 	}
+// }
 public class LinkList {
 	
 	static int countNodes(Node head) {
