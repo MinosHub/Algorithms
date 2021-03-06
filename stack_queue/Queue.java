@@ -38,16 +38,5 @@ public class Queue {
             return -10000000;
         }
         return head.data;
-    }
-
-    public static void main(String[] args) {
-        
-        Queue q = new Queue();
-        // q.enQueue(34);
-        // q.enQueue(12);
-        // q.enQueue(78);
-
-        // System.out.println(q.peek() + " " + q.peek() + " " + q.peek());
-        // System.out.println(q.deQueue() + " " + q.deQueue() + " " + q.deQueue());
-    }
+    }   
 }

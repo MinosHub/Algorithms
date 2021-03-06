@@ -14,7 +14,14 @@ public class Main {
         s.push(45);
         s.push(12);
         s.push(98);
+        s.push(9);
+        s.push(78);
 
-        System.out.println(s.pop() + " " + s.pop() + " " + s.pop());
+        System.out.println(s.peek() + " " + s.peek() + " " + s.peek());
+
+        // System.out.println("poping top of the stack = " + s.pop());
+        // System.out.println("item top of the stack = " + s.peek());
+
+        
     }
 }
