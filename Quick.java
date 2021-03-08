@@ -9,7 +9,7 @@ public class Quick {
             // printArray(arr);
             // If current element is smaller than or 
             // equal to pivot 
-            if (arr[j] <= pivot) 
+            if (arr[j] <= pivot) // asc <= | desc >= (current asc)
             { 
                 i++; 
                 // swap arr[i] and arr[j] 
@@ -53,6 +53,8 @@ public class Quick {
 
     public static void main(String[] args) {
         int arr[] = { 64,-6,44,25,37,7,29,-22,12,-18 };
+        // in this one I am supposed to modify the partition function to swap to desc order
+        // first if statement in the loop is the target
         int n = arr.length; 
   
         System.out.println("Unsorted array"); 

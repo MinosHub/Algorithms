@@ -47,18 +47,26 @@ public class Bubble {
         System.out.println("Ascending:");        
         ob.printArray(arr);
 
+
         System.out.println();
-        ob.sort(arr); // this is asc order // to do desc just call sortReverse
+
+        // block below is asc
+
+        ob.sort(arr); // this is asc order // to do desc just call sortReverse or comment out and use separate call
 
         System.out.println();
         ob.printArray(arr);
 
-        // System.out.println();
+        System.out.println();
 
-        // System.out.println("Descending:");        
-        // ob.printArray(arr);
+        // block above is ascending
 
-        // System.out.println();
-        // ob.sortReverse(arr);
+        // comment block below to disable descending 
+
+        System.out.println("Descending:");        
+        ob.printArray(arr);
+
+        System.out.println();
+        ob.sortReverse(arr);
     }
 }

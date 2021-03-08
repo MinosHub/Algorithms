@@ -62,6 +62,8 @@ public class Insertion
         printArray(arr);
         System.out.println("**********");
 
+        System.out.println();
+        
         //desc
         System.out.println("**********");
         System.out.println("DESC");
