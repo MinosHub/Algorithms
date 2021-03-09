@@ -1,6 +1,10 @@
 package Hashing;
 
 public class LinearHashTable {
+    /**
+     *
+     */
+    private static final String EMPTY = "EMPTY";
     private String[] table;
     private int tableSize;
     private double loadFactor; //0.80
@@ -10,7 +14,7 @@ public class LinearHashTable {
         table = new String[max];
         tableSize= max;
         for (int x = 0; x<tableSize; x++){
-            table[x]="EMPTY";
+            table[x]=EMPTY;
         }
         loadFactor=lf;
         numItems=0;
@@ -19,7 +23,7 @@ public class LinearHashTable {
         table = new String[max];
         tableSize= max;
         for (int x = 0; x<tableSize; x++){
-            table[x]="EMPTY";
+            table[x]=EMPTY;
         }
         loadFactor=0.75;
         numItems=0;
@@ -29,7 +33,7 @@ public class LinearHashTable {
         table = new String[20];
         tableSize= 20;
         for (int x = 0; x<tableSize; x++){
-            table[x]="EMPTY";
+            table[x]=EMPTY;
         }
         loadFactor=0.75;
         numItems=0;
@@ -47,7 +51,7 @@ public class LinearHashTable {
     public void insert (String word){
         if (numItems/tableSize < loadFactor){
             int loc =hashFunction(word);  
-            while (table[loc].compareTo("EMPTY")!=0 && table[loc].compareTo("DELETED")!=0){
+            while (table[loc].compareTo(EMPTY)!=0 && table[loc].compareTo("DELETED")!=0){
                 loc = (loc+1)%tableSize;
             }    
             table[loc]=word;
@@ -57,20 +61,20 @@ public class LinearHashTable {
     
     public int search(String word){
         int loc = hashFunction(word);  
-        while (table[loc].compareTo(word)!=0 && table[loc].compareTo("EMPTY")!=0){
+        while (table[loc].compareTo(word)!=0 && table[loc].compareTo(EMPTY)!=0){
             loc = (loc+1)%tableSize;
         }
-        if (table[loc].compareTo("EMPTY")==0)
+        if (table[loc].compareTo(EMPTY)==0)
             return -1;
         return loc;
     }
     
     public void delete(String word){
         int loc = hashFunction(word);  
-        while (table[loc].compareTo(word)!=0 && table[loc].compareTo("EMPTY")!=0){
+        while (table[loc].compareTo(word)!=0 && table[loc].compareTo(EMPTY)!=0){
             loc = (loc+1)%tableSize;
         }
-        if (table[loc].compareTo("EMPTY")!=0){
+        if (table[loc].compareTo(EMPTY)!=0){
             table[loc]="DELETED"; 
             numItems--;
         }
@@ -103,6 +107,6 @@ public class LinearHashTable {
         lht.insert("andrew");
 
         lht.printTable();
-        
+
     }
 }
