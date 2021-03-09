@@ -13,4 +13,4 @@ public class Collatz {
 
         System.out.println(ob.collatz(27));
     }
-}   
+}
