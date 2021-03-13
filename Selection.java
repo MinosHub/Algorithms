@@ -61,7 +61,7 @@ public class Selection
     public static void main(String[] args) 
     {
         
-        int arr[] = {68,42,-12,69,61,-20,59,-1,13,62};
+        int arr[] = { 6,42,61,32,-19,30,-15,-11,21,58 };
 
         Selection ob = new Selection();
 

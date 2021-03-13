@@ -42,10 +42,10 @@ public class Binary
         
         Binary ob = new Binary();
         // index      1  2  3  4  5   6   7   8   9
-        int arr[] = { 0, 2, 3, 4, 10, 40, 44, 55, 66 };
+        int arr[] = { -16,1,12,16,16,25,33,41,60,68 };
         // int arr[] = { 66,55,44,40,10,4,3,2,0 }; // this one is just reversed of the above to experiment with
         int n = arr.length;
-        int key = 1;
+        int key = 69;
         
         int result = ob.binary(arr, 0, n - 1, key);
 
