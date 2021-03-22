@@ -1,16 +1,13 @@
 package Hashing;
 
-public class LinearHashTable {
-    /**
-     *
-     */
+public class QuadHashTable {
     private static final String EMPTY = "EMPTY";    // this is the EMPTY constant that assigns to the deleting item
     private String[] table;                         //  this is the array
     private int tableSize;                          //  this is the size of the table
     private double loadFactor;                      // this is the load factor 0.80 (80%) the range is 75-80% or less to keep the database consistent
     int numItems;                                   // this variable will keep track of the table content that are not EMPTY ot DELETED
 
-    public LinearHashTable(int max,double lf){      //overloaded when there are 2 arguments(int, double) passed
+    public QuadHashTable(int max,double lf){      //overloaded when there are 2 arguments(int, double) passed
         table = new String[max];                    // this will create a new array called table with the int passed to the function
         tableSize = max;                            // this will assign tableSize to max
         // for (int x = 0; x < tableSize; x++){        
@@ -20,7 +17,7 @@ public class LinearHashTable {
         numItems = 0;                               // numItems is a counter to keep track of (active) items in the table
     }
                         //tableSize
-    public LinearHashTable(int max){                //overloaded when there is one argument(int) passed
+    public QuadHashTable(int max){                //overloaded when there is one argument(int) passed
         table = new String[max];                    
         tableSize = max;                    
         // for (int x = 0; x < tableSize; x++){
@@ -30,7 +27,7 @@ public class LinearHashTable {
         numItems = 0;   
     }
     
-    public LinearHashTable(){                       //overloaded when arguments are not passed | current sample in main
+    public QuadHashTable(){                       //overloaded when arguments are not passed | current sample in main
         table = new String[20];                     // default (value for the table is 20 when nothing is passed to the function)
         tableSize = 20;                             // default
         // for (int x = 0; x < tableSize; x++){
