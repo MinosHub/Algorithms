@@ -95,25 +95,18 @@ public class QuadHashTable {
             while (table[loc] != null && table[loc].compareTo("DELETED") != 0){    // if location[6] is not "empty" && and location[6] is not "deleted"    
                 loc = (loc + 1) % tableSize;                                                     // (loc(6) + 1) % tableSize(20) = 7
             }
-
             // araz = 7 = loc
-
-            // 0 = true = yes = right = da = ayo
-            // 1 = false = no = wrong = net = voch
-
+            // 0 = true
+            // 1 = false
             // (example)
             // 1 == 1 = true
             // 1 != 1 = false
             // 1 != 0 = true
             // 0 != 0 = false
-
-            
-
             table[loc] = word;
             numItems++;
         }
     }
-
     //table
     //7 Araz
     //6 Mino
@@ -122,8 +115,7 @@ public class QuadHashTable {
     //3 Talin
     //2 EMPTY
     //1 EMPTY
-    //0 EMPTY
-    
+    //0 EMPTY  
     public int search(String word){                 // this is the search function
         int loc = hashFunction(word);  
         while (table[loc].compareTo(word) != 0 && table[loc] != null){
