@@ -30,7 +30,7 @@ public class Main {
 
         QuadHashTable qht = new QuadHashTable();
 
-        
+        qht.printTable();
 
     }
 }

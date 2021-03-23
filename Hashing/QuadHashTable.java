@@ -1,7 +1,6 @@
 package Hashing;
 
 public class QuadHashTable {
-    private static final String EMPTY = "EMPTY";    // this is the EMPTY constant that assigns to the deleting item
     private String[] table;                         //  this is the array
     private int tableSize;                          //  this is the size of the table
     private double loadFactor;                      // this is the load factor 0.80 (80%) the range is 75-80% or less to keep the database consistent
@@ -10,9 +9,6 @@ public class QuadHashTable {
     public QuadHashTable(int max,double lf){      //overloaded when there are 2 arguments(int, double) passed
         table = new String[max];                    // this will create a new array called table with the int passed to the function
         tableSize = max;                            // this will assign tableSize to max
-        // for (int x = 0; x < tableSize; x++){        
-        //     table[x] = EMPTY;                       // assigning all elements of the table top EMPTY
-        // }
         loadFactor = lf;                            // load factor assigning to the double passed in function
         numItems = 0;                               // numItems is a counter to keep track of (active) items in the table
     }
@@ -20,9 +16,6 @@ public class QuadHashTable {
     public QuadHashTable(int max){                //overloaded when there is one argument(int) passed
         table = new String[max];                    
         tableSize = max;                    
-        // for (int x = 0; x < tableSize; x++){
-        //     table[x] = EMPTY;
-        // }
         loadFactor = 0.75;                          // load factor is default 0.75(75%) when no argument is passed to it 
         numItems = 0;   
     }
@@ -30,9 +23,6 @@ public class QuadHashTable {
     public QuadHashTable(){                       //overloaded when arguments are not passed | current sample in main
         table = new String[20];                     // default (value for the table is 20 when nothing is passed to the function)
         tableSize = 20;                             // default
-        // for (int x = 0; x < tableSize; x++){
-        //     table[x] = EMPTY;
-        // }
         loadFactor = 0.75;                          // default
         numItems = 0;
     }
@@ -95,7 +85,6 @@ public class QuadHashTable {
             while (table[loc] != null && table[loc].compareTo("DELETED") != 0){    // if location[6] is not "empty" && and location[6] is not "deleted"    
                 loc = (loc + 1) % tableSize;                                                     // (loc(6) + 1) % tableSize(20) = 7
             }
-            // araz = 7 = loc
             // 0 = true
             // 1 = false
             // (example)
@@ -142,11 +131,11 @@ public class QuadHashTable {
         for (int x = 0; x < tableSize; x++){
             if (table[x] != null)
             {
-                System.out.println(table[x]);                
+                System.out.println(x + " - " + table[x]);                
             }
             else
             {
-                System.out.println("EMPTY");
+                System.out.println(x + " - " + "EMPTY");
             }       
         }
         System.out.println("");

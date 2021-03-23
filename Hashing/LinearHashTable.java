@@ -153,11 +153,11 @@ public class LinearHashTable {
         for (int x = 0; x < tableSize; x++){
             if (table[x] != null)
             {
-                System.out.println(table[x]);                
+                System.out.println(x + " - " + table[x]);                
             }
             else
             {
-                System.out.println("EMPTY");
+                System.out.println(x + " - " + "EMPTY");
             }       
         }
         System.out.println("");
