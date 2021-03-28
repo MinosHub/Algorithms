@@ -98,34 +98,10 @@ public class LinearHashTable {
             while (table[loc] != null && table[loc].compareTo("DELETED") != 0){    // if location[6] is not "empty" && and location[6] is not "deleted"    
                 loc = (loc + 1) % tableSize;                                                     // (loc(6) + 1) % tableSize(20) = 7
             }
-
-            // araz = 7 = loc
-
-            // 0 = true = yes = right = da = ayo
-            // 1 = false = no = wrong = net = voch
-
-            // (example)
-            // 1 == 1 = true
-            // 1 != 1 = false
-            // 1 != 0 = true
-            // 0 != 0 = false
-
-            
-
             table[loc] = word;
             numItems++;
         }
     }
-
-    //table
-    //7 Araz
-    //6 Mino
-    //5 Hovsep
-    //4 EMPTY
-    //3 Talin
-    //2 EMPTY
-    //1 EMPTY
-    //0 EMPTY
     
     public int search(String word){                 // this is the search function
         int loc = hashFunction(word);  
