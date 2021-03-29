@@ -51,28 +51,28 @@ public class QuadHashTable {
 
     // 3 inputs hashing segment + overloaded version for int below
 
-    private int hashFunctionThreeWords(String name, String accountNum, String other){          // this will work for accountNum if it was String
-        int value = 0;                              
-        int weight1 = 1;                                                         
-        int weight3 = 1;         
+    // private int hashFunctionThreeWords(String name, String accountNum, String other){          // this will work for accountNum if it was String
+    //     int value = 0;                              
+    //     int weight1 = 1;                                                         
+    //     int weight3 = 1;         
 
-        // there is an exception 
+    //     // there is an exception 
              
-		for (int x = 0; x < name.length(); x++) {
+	// 	for (int x = 0; x < name.length(); x++) {
         
-            value += (name.charAt(x) - 'a' + 1) * weight1;  
-            weight1++;                               
-        }            
+    //         value += (name.charAt(x) - 'a' + 1) * weight1;  
+    //         weight1++;                               
+    //     }            
 
-        value += Integer.parseInt(accountNum); 
+    //     value += Integer.parseInt(accountNum); 
 
-        for (int x = 0; x < other.length(); x++){    // iterates through the string to the length of the passed string               
-            value += (other.charAt(x) - 'a' + 1) * weight3;  
-            weight3++;                               
-        }
+    //     for (int x = 0; x < other.length(); x++){    // iterates through the string to the length of the passed string               
+    //         value += (other.charAt(x) - 'a' + 1) * weight3;  
+    //         weight3++;                               
+    //     }
 
-        return value % tableSize;                  
-    }
+    //     return value % tableSize;                  
+    // }
 
     private int hashFunctionThreeWords(String name, int accountNum, String other){          // this will work for accountNum if it was INT
         int value = 0;                              
@@ -87,6 +87,25 @@ public class QuadHashTable {
                             
         for (int x = 0; x < other.length(); x++){    // iterates through the string to the length of the passed string               
             value += (other.charAt(x) - 'a' + 1) * weight3;  
+            weight3++;                               
+        }
+        
+        return value % tableSize;                  
+    }
+    
+    private int hashFunctionThreeWords(Account obj){          // this will work for accountNum if it was INT
+        int value = 0;                              
+        int weight1 = 1;                                                        
+        int weight3 = 1;                             
+        for (int x = 0; x < obj.accountName.length(); x++){       
+            value += (obj.accountName.charAt(x) - 'a' + 1) * weight1;  
+            weight1++;                               
+        }
+
+		value += obj.accountNum;  // int are already unique deterministically
+                            
+        for (int x = 0; x < obj.otherVariable.length(); x++){    // iterates through the string to the length of the passed string               
+            value += (obj.otherVariable.charAt(x) - 'a' + 1) * weight3;  
             weight3++;                               
         }
         
@@ -112,7 +131,7 @@ public class QuadHashTable {
     public void insert (Account obj){
         if (numItems/tableSize < loadFactor){
             int count = 1;
-            int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);             // change this function name according to the requirements given
+            int startLoc = hashFunctionThreeWords(obj);             // change this function name according to the requirements given
             int loc = startLoc;
             while (table[loc]!=null && table[loc].compareTo("DELETED")!=0){
                 loc = (startLoc + count*count)%tableSize;
@@ -126,7 +145,7 @@ public class QuadHashTable {
 	public int search(Account obj) {
 		int count = 1;
 
-		int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);              // change this function name according to the requirements given
+		int startLoc = hashFunctionThreeWords(obj);              // change this function name according to the requirements given
 		int loc = startLoc;
 
 		while (table[loc] != null && table[loc].compareTo(obj.accountName) != 0) {                              // this needs to be revisited depending on the requirements
@@ -135,14 +154,15 @@ public class QuadHashTable {
 		}
 		if (table[loc] == null)
 			return -1;
-		return loc;
+        // obj.otherVariable = "changed2";
+        return loc;
 	}
 
 
     public void delete(Account obj){
         
         int count = 1;
-        int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);          // change this function name according to the requirements given
+        int startLoc = hashFunctionThreeWords(obj);          // change this function name according to the requirements given
         int loc = startLoc; 
         // startLoc above can be replaced with a search call. When the value returns -1 it means the position is null or deleted which leads to the if statement below (alternative code)
         
