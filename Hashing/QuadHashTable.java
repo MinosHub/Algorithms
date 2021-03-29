@@ -35,15 +35,15 @@ public class QuadHashTable {
 
     // hash function segment
 
-    private int hashFunction(String word){          // this is the hash function
-        int value = 0;                              // value will be assigned with a hashed number
-        int weight = 1;                             // weight will keep count to the position of the letter
-        for (int x = 0; x < word.length(); x++){    // iterates through the string to the length of the passed string               
-            value += (word.charAt(x) - 'a' + 1) * weight;  // assigns value to the ((size of char - 'size of char(a)') * weight) //  aaa 1x1 + 1x2 + 1x3 = 6
-            weight++;                               // iterates to keep track of char position           (for example)           //  aaa 1x1 + 1x2 + 1x3 = 6
-        }
-        return value % tableSize;                   // return int value of the item position 6%20(default) = 6
-    }
+    // private int hashFunction(String word){          // this is the hash function
+    //     int value = 0;                              // value will be assigned with a hashed number
+    //     int weight = 1;                             // weight will keep count to the position of the letter
+    //     for (int x = 0; x < word.length(); x++){    // iterates through the string to the length of the passed string               
+    //         value += (word.charAt(x) - 'a' + 1) * weight;  // assigns value to the ((size of char - 'size of char(a)') * weight) //  aaa 1x1 + 1x2 + 1x3 = 6
+    //         weight++;                               // iterates to keep track of char position           (for example)           //  aaa 1x1 + 1x2 + 1x3 = 6
+    //     }
+    //     return value % tableSize;                   // return int value of the item position 6%20(default) = 6
+    // }
 
     
 
@@ -94,27 +94,42 @@ public class QuadHashTable {
     }
 
     // insert search delete (update)
-    public void insert (String word, int accountNum, String other){
+    // public void insert (String word, int accountNum, String other){
+    //     if (numItems/tableSize < loadFactor){
+    //         int count = 1;
+    //         int startLoc = hashFunctionThreeWords(word, accountNum, other);             // change this function name according to the requirements given
+    //         int loc = startLoc;
+    //         while (table[loc]!=null && table[loc].compareTo("DELETED")!=0){
+    //             loc = (startLoc + count*count)%tableSize;
+    //             count++;
+    //         }    
+    //         table[loc] = word;
+    //         numItems++;
+    //     }
+    // }
+    
+    //
+    public void insert (Account obj){
         if (numItems/tableSize < loadFactor){
             int count = 1;
-            int startLoc = hashFunctionThreeWords(word, accountNum, other);             // change this function name according to the requirements given
+            int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);             // change this function name according to the requirements given
             int loc = startLoc;
             while (table[loc]!=null && table[loc].compareTo("DELETED")!=0){
                 loc = (startLoc + count*count)%tableSize;
                 count++;
             }    
-            table[loc] = word;
+            table[loc] = obj.accountName;
             numItems++;
         }
     }
  
-	public int search(String word, int accountNum, String other) {
+	public int search(Account obj) {
 		int count = 1;
 
-		int startLoc = hashFunctionThreeWords(word, accountNum, other);              // change this function name according to the requirements given
+		int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);              // change this function name according to the requirements given
 		int loc = startLoc;
 
-		while (table[loc] != null && table[loc].compareTo(word) != 0) {
+		while (table[loc] != null && table[loc].compareTo(obj.accountName) != 0) {                              // this needs to be revisited depending on the requirements
 			loc = (startLoc + count * count) % tableSize;
 			count++;
 		}
@@ -124,24 +139,24 @@ public class QuadHashTable {
 	}
 
 
-    public void delete(String word, int accountNum, String other){
+    public void delete(Account obj){
         
         int count = 1;
-        int startLoc = hashFunctionThreeWords(word, accountNum, other);          // change this function name according to the requirements given
+        int startLoc = hashFunctionThreeWords(obj.accountName, obj.accountNum, obj.otherVariable);          // change this function name according to the requirements given
         int loc = startLoc; 
         // startLoc above can be replaced with a search call. When the value returns -1 it means the position is null or deleted which leads to the if statement below (alternative code)
         
-        while (table[loc]!=null && table[loc].compareTo(word)!=0){
+        while (table[loc]!=null && table[loc].compareTo(obj.accountName)!=0){
             loc = (startLoc + count*count) % tableSize;
             count++;
         }
-        if (table[loc] != null){ // this can check for -1 and if it is true confirms item has been deleted and decrements numItems (alternative code)
+        if (table[loc] != null){                                                        // this can check for -1 and if it is true confirms item has been deleted and decrements numItems (alternative code)
             table[loc] = "DELETED"; 
             numItems--;
         }
     } 
     
-    public void printTable(){                       // this is the printing function
+    public void printTable(){                       
         System.out.println("Hash Table Contents");
         for (int x = 0; x < tableSize; x++){
             if (table[x] != null)
