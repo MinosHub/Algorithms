@@ -49,8 +49,7 @@ public class QuadHashTable {
 
 
 
-    // 3 inputs hashing segment + overloaded version for int below
-
+    // this is modified to overload 3 argument STR|STR|STR
     // private int hashFunctionThreeWords(String name, String accountNum, String other){          // this will work for accountNum if it was String
     //     int value = 0;                              
     //     int weight1 = 1;                                                         
@@ -74,25 +73,28 @@ public class QuadHashTable {
     //     return value % tableSize;                  
     // }
 
-    private int hashFunctionThreeWords(String name, int accountNum, String other){          // this will work for accountNum if it was INT
-        int value = 0;                              
-        int weight1 = 1;                                                        
-        int weight3 = 1;                             
-        for (int x = 0; x < name.length(); x++){       
-            value += (name.charAt(x) - 'a' + 1) * weight1;  
-            weight1++;                               
-        }
+    // this is modified to overload 3 argument STR|INT|STR
+    // private int hashFunctionThreeWords(String name, int accountNum, String other){          // this will work for accountNum if it was INT
+    //     int value = 0;                              
+    //     int weight1 = 1;                                                        
+    //     int weight3 = 1;                             
+    //     for (int x = 0; x < name.length(); x++){       
+    //         value += (name.charAt(x) - 'a' + 1) * weight1;  
+    //         weight1++;                               
+    //     }
 
-		value += accountNum;  // int are already unique deterministically
+	// 	value += accountNum;  // int are already unique deterministically
                             
-        for (int x = 0; x < other.length(); x++){    // iterates through the string to the length of the passed string               
-            value += (other.charAt(x) - 'a' + 1) * weight3;  
-            weight3++;                               
-        }
+    //     for (int x = 0; x < other.length(); x++){    // iterates through the string to the length of the passed string               
+    //         value += (other.charAt(x) - 'a' + 1) * weight3;  
+    //         weight3++;                               
+    //     }
         
-        return value % tableSize;                  
-    }
+    //     return value % tableSize;                  
+    // }
     
+
+    // this is modified to pass the object
     private int hashFunctionThreeWords(Account obj){          // this will work for accountNum if it was INT
         int value = 0;                              
         int weight1 = 1;                                                        
@@ -112,7 +114,7 @@ public class QuadHashTable {
         return value % tableSize;                  
     }
 
-    // insert search delete (update)
+    // this is modified to pass 3 arguments STR|INT|STR
     // public void insert (String word, int accountNum, String other){
     //     if (numItems/tableSize < loadFactor){
     //         int count = 1;
@@ -127,7 +129,7 @@ public class QuadHashTable {
     //     }
     // }
     
-    //
+    // this is modified to pass the object
     public void insert (Account obj){
         if (numItems/tableSize < loadFactor){
             int count = 1;
@@ -154,7 +156,7 @@ public class QuadHashTable {
 		}
 		if (table[loc] == null)
 			return -1;
-        // obj.otherVariable = "changed2";
+        // obj.otherVariable = "changed2";                                                                      // this line can change the passed object member value
         return loc;
 	}
 
